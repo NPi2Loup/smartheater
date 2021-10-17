@@ -1,0 +1,43 @@
+package com.mlaroche.smartheater.domain
+
+create DtDefinition DtGeneralStatus {
+	field initEnCours 		{ domain: DoBoolean,	label: "init_en_cours" }
+	field rfPresent 		{ domain: DoBoolean,	label: "rf_present" }
+	field etatWifi 			{ domain: DoNumber,		label: "etat_wifi" }
+	field etatTic 			{ domain: DoNumber,		label: "etat_tic" }
+	field connectInternet	{ domain: DoBoolean,	label: "connect_internet" }
+	field versionInterface	{ domain: DoLabel,		label: "v_interface" }
+	field versionApp		{ domain: DoLabel,		label: "v_app" }
+}
+
+create DtDefinition DtFreeboxInfo {
+	field success		{ domain: DoBoolean,		label: "success" }
+	field uptimeSecond		{ domain: DoNumber,		label: "UpTime en seconde" }
+    field lastreboot        { domain: DoTimestamp,      label: "Dernier reboot" }
+    field tempT1           { domain: DoNumber,     label: "Température 1" }
+    field tempT2      { domain: DoNumber,     label: "Température 2" }
+    field tempCpuB      { domain: DoNumber,     label: "Température CPU B" }
+    field fan0Speed      { domain: DoNumber,     label: "Ventilateur 1" }
+    field rateDown     { domain: DoNumber,     label: "Débit déscendant" }
+    field rateUp       { domain: DoNumber,     label: "Débit montant" }
+    field bytesDown    { domain: DoBytes,     label: "Total déscendant" }
+    field bytesUp      { domain: DoBytes,     label: "Total montant" }
+    field bandwidthDown{ domain: DoBytes,     label: "Max descendant (Kb/s)" }
+    field bandwidthUp  { domain: DoBytes,     label: "Max montant (Kb/s)" }
+}
+
+create DtDefinition DtFreeboxWifi {
+	field success		{ domain: DoBoolean,		label: "success" }
+	field uptimeSecond	{ domain: DoNumber,		label: "UpTime en seconde" }
+    field lastreboot        { domain: DoTimestamp,      label: "Dernier reboot" }
+    field tempT1           { domain: DoNumber,     label: "Température 1" }
+    field tempT2      { domain: DoNumber,     label: "Température 2" }
+    field tempCpuB      { domain: DoNumber,     label: "Température CPU B" }
+    field fan0Speed      { domain: DoNumber,     label: "Ventilateur 1" }
+    field rateDown     { domain: DoNumber,     label: "Débit déscendant" }
+    field rateUp       { domain: DoNumber,     label: "Débit montant" }
+    field bytesDown    { domain: DoBytes,     label: "Total déscendant" }
+    field bytesUp      { domain: DoBytes,     label: "Total montant" }
+    field bandwidthDown{ domain: DoBytes,     label: "Max descendant (Kb/s)" }
+    field bandwidthUp  { domain: DoBytes,     label: "Max montant (Kb/s)" }
+}

@@ -19,6 +19,14 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 	public enum Definitions {
 		/** Objet de données ElectricalConsumption. */
 		ElectricalConsumption(com.mlaroche.smartheater.domain.ElectricalConsumption.class),
+		/** Objet de données ElectricalTarification. */
+		ElectricalTarification(com.mlaroche.smartheater.domain.ElectricalTarification.class),
+		/** Objet de données FreeboxInfo. */
+		FreeboxInfo(com.mlaroche.smartheater.domain.FreeboxInfo.class),
+		/** Objet de données FreeboxWifi. */
+		FreeboxWifi(com.mlaroche.smartheater.domain.FreeboxWifi.class),
+		/** Objet de données GeneralStatus. */
+		GeneralStatus(com.mlaroche.smartheater.domain.GeneralStatus.class),
 		/** Objet de données Heater. */
 		Heater(com.mlaroche.smartheater.domain.Heater.class),
 		/** Objet de données HeaterInfo. */
@@ -29,6 +37,10 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 		HeatersByMode(com.mlaroche.smartheater.domain.HeatersByMode.class),
 		/** Objet de données Protocol. */
 		Protocol(com.mlaroche.smartheater.domain.Protocol.class),
+		/** Objet de données Room. */
+		Room(com.mlaroche.smartheater.domain.Room.class),
+		/** Objet de données Thermostat. */
+		Thermostat(com.mlaroche.smartheater.domain.Thermostat.class),
 		/** Objet de données WeatherInfo. */
 		WeatherInfo(com.mlaroche.smartheater.domain.WeatherInfo.class),
 		/** Objet de données WeeklyCalendar. */
@@ -56,7 +68,113 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 		/** Propriété 'Heure'. */
 		timestamp,
 		/** Propriété 'Puissance moyenne'. */
-		meanPower	}
+		meanPower,
+		/** Propriété 'Conso HP'. */
+		powerHP,
+		/** Propriété 'Conso HC'. */
+		powerHC,
+		/** Propriété 'Cout HP'. */
+		costHP,
+		/** Propriété 'Cout HC'. */
+		costHC	}
+
+	/**
+	 * Enumération des champs de ElectricalTarification.
+	 */
+	public enum ElectricalTarificationFields implements DtFieldName<com.mlaroche.smartheater.domain.ElectricalTarification> {
+		/** Propriété 'Heure'. */
+		timestamp,
+		/** Propriété 'Conso HP'. */
+		powerMax,
+		/** Propriété 'Cout HP'. */
+		costHP,
+		/** Propriété 'Cout HC'. */
+		costHC,
+		/** Propriété 'Début HP'. */
+		beginHP,
+		/** Propriété 'Fin HP'. */
+		endHP	}
+
+	/**
+	 * Enumération des champs de FreeboxInfo.
+	 */
+	public enum FreeboxInfoFields implements DtFieldName<com.mlaroche.smartheater.domain.FreeboxInfo> {
+		/** Propriété 'success'. */
+		success,
+		/** Propriété 'UpTime en seconde'. */
+		uptimeSecond,
+		/** Propriété 'Dernier reboot'. */
+		lastreboot,
+		/** Propriété 'Température 1'. */
+		tempT1,
+		/** Propriété 'Température 2'. */
+		tempT2,
+		/** Propriété 'Température CPU B'. */
+		tempCpuB,
+		/** Propriété 'Ventilateur 1'. */
+		fan0Speed,
+		/** Propriété 'Débit déscendant'. */
+		rateDown,
+		/** Propriété 'Débit montant'. */
+		rateUp,
+		/** Propriété 'Total déscendant'. */
+		bytesDown,
+		/** Propriété 'Total montant'. */
+		bytesUp,
+		/** Propriété 'Max descendant (Kb/s)'. */
+		bandwidthDown,
+		/** Propriété 'Max montant (Kb/s)'. */
+		bandwidthUp	}
+
+	/**
+	 * Enumération des champs de FreeboxWifi.
+	 */
+	public enum FreeboxWifiFields implements DtFieldName<com.mlaroche.smartheater.domain.FreeboxWifi> {
+		/** Propriété 'success'. */
+		success,
+		/** Propriété 'UpTime en seconde'. */
+		uptimeSecond,
+		/** Propriété 'Dernier reboot'. */
+		lastreboot,
+		/** Propriété 'Température 1'. */
+		tempT1,
+		/** Propriété 'Température 2'. */
+		tempT2,
+		/** Propriété 'Température CPU B'. */
+		tempCpuB,
+		/** Propriété 'Ventilateur 1'. */
+		fan0Speed,
+		/** Propriété 'Débit déscendant'. */
+		rateDown,
+		/** Propriété 'Débit montant'. */
+		rateUp,
+		/** Propriété 'Total déscendant'. */
+		bytesDown,
+		/** Propriété 'Total montant'. */
+		bytesUp,
+		/** Propriété 'Max descendant (Kb/s)'. */
+		bandwidthDown,
+		/** Propriété 'Max montant (Kb/s)'. */
+		bandwidthUp	}
+
+	/**
+	 * Enumération des champs de GeneralStatus.
+	 */
+	public enum GeneralStatusFields implements DtFieldName<com.mlaroche.smartheater.domain.GeneralStatus> {
+		/** Propriété 'init_en_cours'. */
+		initEnCours,
+		/** Propriété 'rf_present'. */
+		rfPresent,
+		/** Propriété 'etat_wifi'. */
+		etatWifi,
+		/** Propriété 'etat_tic'. */
+		etatTic,
+		/** Propriété 'connect_internet'. */
+		connectInternet,
+		/** Propriété 'v_interface'. */
+		versionInterface,
+		/** Propriété 'v_app'. */
+		versionApp	}
 
 	/**
 	 * Enumération des champs de Heater.
@@ -120,19 +238,59 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 		label	}
 
 	/**
+	 * Enumération des champs de Room.
+	 */
+	public enum RoomFields implements DtFieldName<com.mlaroche.smartheater.domain.Room> {
+		/** Propriété 'Id'. */
+		rooId,
+		/** Propriété 'Nom'. */
+		name	}
+
+	/**
+	 * Enumération des champs de Thermostat.
+	 */
+	public enum ThermostatFields implements DtFieldName<com.mlaroche.smartheater.domain.Thermostat> {
+		/** Propriété 'Code'. */
+		theCd,
+		/** Propriété 'Nom'. */
+		name,
+		/** Propriété 'Puissance'. */
+		power,
+		/** Propriété 'Observation'. */
+		observation,
+		/** Propriété 'Signal RF'. */
+		signalRf,
+		/** Propriété 'Signal RF'. */
+		signalRfLabel,
+		/** Propriété 'Clignote'. */
+		blink,
+		/** Propriété 'Piece'. */
+		rooId	}
+
+	/**
 	 * Enumération des champs de WeatherInfo.
 	 */
 	public enum WeatherInfoFields implements DtFieldName<com.mlaroche.smartheater.domain.WeatherInfo> {
+		/** Propriété 'Heure'. */
+		timestamp,
 		/** Propriété 'Temperature'. */
 		temperature,
 		/** Propriété 'Humidité'. */
 		humidity,
+		/** Propriété 'Pression'. */
+		pressure,
+		/** Propriété '% de Nuages'. */
+		clouds,
 		/** Propriété 'Mode'. */
 		location,
 		/** Propriété 'Mode'. */
 		icon,
 		/** Propriété 'Mode'. */
-		description	}
+		description,
+		/** Propriété 'Levé de soleil'. */
+		sunrise,
+		/** Propriété 'Couché de soleil'. */
+		sunset	}
 
 	/**
 	 * Enumération des champs de WeeklyCalendar.

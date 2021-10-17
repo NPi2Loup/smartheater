@@ -1,0 +1,14 @@
+package com.mlaroche.smartheater.domain
+
+create DtDefinition DtWeatherInfo {
+	field timestamp			{ domain: DoTimestamp,		label: "Heure" }
+	field temperature		{ domain: DoDouble,		label: "Temperature" }
+	field humidity			{ domain: DoDouble,		label: "Humidité" }
+	field pressure			{ domain: DoNumber,		label: "Pression" }
+	field clouds			{ domain: DoNumber,			label: "% de Nuages" }
+	field location			{ domain: DoLabel,			label: "Mode" }
+	field icon				{ domain: DoLabel,			label: "Mode" }
+	field description		{ domain: DoLabel,			label: "Mode" }
+	field sunrise			{ domain: DoTimestamp,		label: "Levé de soleil" }
+	field sunset			{ domain: DoTimestamp,		label: "Couché de soleil" }
+}

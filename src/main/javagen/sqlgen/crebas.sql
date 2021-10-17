@@ -13,6 +13,10 @@ create sequence SEQ_HEATER
 
 
 
+create sequence SEQ_ROOM
+	start with 1000 cache 20; 
+
+
 create sequence SEQ_WEEKLY_CALENDAR
 	start with 1000 cache 20; 
 
@@ -94,6 +98,62 @@ comment on column PROTOCOL.LABEL is
 'Nom';
 
 -- ============================================================
+--   Table : ROOM                                        
+-- ============================================================
+create table ROOM
+(
+    ROO_ID      	 NUMERIC     	not null,
+    NAME        	 VARCHAR(100)	,
+    constraint PK_ROOM primary key (ROO_ID)
+);
+
+comment on column ROOM.ROO_ID is
+'Id';
+
+comment on column ROOM.NAME is
+'Nom';
+
+-- ============================================================
+--   Table : THERMOSTAT                                        
+-- ============================================================
+create table THERMOSTAT
+(
+    THE_CD      	 VARCHAR(100)	not null,
+    NAME        	 VARCHAR(100)	,
+    POWER       	 NUMERIC     	,
+    OBSERVATION 	 TEXT        	,
+    SIGNAL_RF   	 NUMERIC     	,
+    SIGNAL_RF_LABEL	 VARCHAR(100)	,
+    BLINK       	 BOOL        	,
+    ROO_ID      	 NUMERIC     	not null,
+    constraint PK_THERMOSTAT primary key (THE_CD)
+);
+
+comment on column THERMOSTAT.THE_CD is
+'Code';
+
+comment on column THERMOSTAT.NAME is
+'Nom';
+
+comment on column THERMOSTAT.POWER is
+'Puissance';
+
+comment on column THERMOSTAT.OBSERVATION is
+'Observation';
+
+comment on column THERMOSTAT.SIGNAL_RF is
+'Signal RF';
+
+comment on column THERMOSTAT.SIGNAL_RF_LABEL is
+'Signal RF';
+
+comment on column THERMOSTAT.BLINK is
+'Clignote';
+
+comment on column THERMOSTAT.ROO_ID is
+'Piece';
+
+-- ============================================================
 --   Table : WEEKLY_CALENDAR                                        
 -- ============================================================
 create table WEEKLY_CALENDAR
@@ -131,5 +191,11 @@ alter table HEATER
 	references WEEKLY_CALENDAR (WCA_ID);
 
 create index A_HEA_WCA_WEEKLY_CALENDAR_FK on HEATER (WCA_ID asc);
+
+alter table THERMOSTAT
+	add constraint FK_A_ROO_THE_ROOM foreign key (ROO_ID)
+	references ROOM (ROO_ID);
+
+create index A_ROO_THE_ROOM_FK on THERMOSTAT (ROO_ID asc);
 
 

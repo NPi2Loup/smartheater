@@ -13,17 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mlaroche.smartheater.services;
+package com.mlaroche.smartheater.jobs;
 
-import com.mlaroche.smartheater.domain.WeatherInfo;
+import javax.inject.Inject;
 
-import io.vertigo.core.node.component.Component;
+import com.mlaroche.smartheater.services.SmartEcoControlServices;
 
-public interface WeatherServices extends Component {
+import io.vertigo.orchestra.services.execution.RunnableActivityEngine;
 
-	WeatherInfo getWeatherInfo();
-	
+public class SmartEcoControlElectricalConsumptionActivityEngine extends RunnableActivityEngine {
 
-	void updateWeather(final String measureName);
+	@Inject
+	private SmartEcoControlServices electricalConsumptionServices;
+
+	@Override
+	public void run() {
+		electricalConsumptionServices.updateElectricalConsumption("electrical.conso");
+	}
 
 }

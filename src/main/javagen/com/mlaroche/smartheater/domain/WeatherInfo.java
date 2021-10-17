@@ -13,11 +13,35 @@ import io.vertigo.datamodel.structure.util.DtObjectUtil;
 public final class WeatherInfo implements DtObject {
 	private static final long serialVersionUID = 1L;
 
+	private java.time.Instant timestamp;
 	private Double temperature;
 	private Double humidity;
+	private Integer pressure;
+	private Integer clouds;
 	private String location;
 	private String icon;
 	private String description;
+	private java.time.Instant sunrise;
+	private java.time.Instant sunset;
+	
+	/**
+	 * Champ : DATA.
+	 * Récupère la valeur de la propriété 'Heure'.
+	 * @return Instant timestamp
+	 */
+	@Field(smartType = "STyTimestamp", label = "Heure")
+	public java.time.Instant getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * Champ : DATA.
+	 * Définit la valeur de la propriété 'Heure'.
+	 * @param timestamp Instant
+	 */
+	public void setTimestamp(final java.time.Instant timestamp) {
+		this.timestamp = timestamp;
+	}
 	
 	/**
 	 * Champ : DATA.
@@ -55,6 +79,44 @@ public final class WeatherInfo implements DtObject {
 	 */
 	public void setHumidity(final Double humidity) {
 		this.humidity = humidity;
+	}
+	
+	/**
+	 * Champ : DATA.
+	 * Récupère la valeur de la propriété 'Pression'.
+	 * @return Integer pressure
+	 */
+	@Field(smartType = "STyNumber", label = "Pression")
+	public Integer getPressure() {
+		return pressure;
+	}
+
+	/**
+	 * Champ : DATA.
+	 * Définit la valeur de la propriété 'Pression'.
+	 * @param pressure Integer
+	 */
+	public void setPressure(final Integer pressure) {
+		this.pressure = pressure;
+	}
+	
+	/**
+	 * Champ : DATA.
+	 * Récupère la valeur de la propriété '% de Nuages'.
+	 * @return Integer clouds
+	 */
+	@Field(smartType = "STyNumber", label = "% de Nuages")
+	public Integer getClouds() {
+		return clouds;
+	}
+
+	/**
+	 * Champ : DATA.
+	 * Définit la valeur de la propriété '% de Nuages'.
+	 * @param clouds Integer
+	 */
+	public void setClouds(final Integer clouds) {
+		this.clouds = clouds;
 	}
 	
 	/**
@@ -112,6 +174,44 @@ public final class WeatherInfo implements DtObject {
 	 */
 	public void setDescription(final String description) {
 		this.description = description;
+	}
+	
+	/**
+	 * Champ : DATA.
+	 * Récupère la valeur de la propriété 'Levé de soleil'.
+	 * @return Instant sunrise
+	 */
+	@Field(smartType = "STyTimestamp", label = "Levé de soleil")
+	public java.time.Instant getSunrise() {
+		return sunrise;
+	}
+
+	/**
+	 * Champ : DATA.
+	 * Définit la valeur de la propriété 'Levé de soleil'.
+	 * @param sunrise Instant
+	 */
+	public void setSunrise(final java.time.Instant sunrise) {
+		this.sunrise = sunrise;
+	}
+	
+	/**
+	 * Champ : DATA.
+	 * Récupère la valeur de la propriété 'Couché de soleil'.
+	 * @return Instant sunset
+	 */
+	@Field(smartType = "STyTimestamp", label = "Couché de soleil")
+	public java.time.Instant getSunset() {
+		return sunset;
+	}
+
+	/**
+	 * Champ : DATA.
+	 * Définit la valeur de la propriété 'Couché de soleil'.
+	 * @param sunset Instant
+	 */
+	public void setSunset(final java.time.Instant sunset) {
+		this.sunset = sunset;
 	}
 	
 	/** {@inheritDoc} */

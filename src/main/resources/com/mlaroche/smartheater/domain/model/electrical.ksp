@@ -1,0 +1,19 @@
+package com.mlaroche.smartheater.domain
+
+create DtDefinition DtElectricalConsumption {
+	field timestamp		{ domain: DoTimestamp,		label: "Heure" }
+	field meanPower		{ domain: DoDouble			label: "Puissance moyenne" }
+	field powerHP		{ domain: DoNumber,			label: "Conso HP" }
+	field powerHC		{ domain: DoNumber,			label: "Conso HC" }
+	field costHP		{ domain: DoDouble,			label: "Cout HP" }
+	field costHC		{ domain: DoDouble,			label: "Cout HC" }
+}
+
+create DtDefinition DtElectricalTarification {
+	field timestamp		{ domain: DoTimestamp,		label: "Heure" }
+	field powerMax		{ domain: DoNumber,			label: "Puissance max" }
+	field costHP		{ domain: DoDouble,			label: "Cout HP" }
+	field costHC		{ domain: DoDouble,			label: "Cout HC" }
+	field beginHP		{ domain: DoNumber,			label: "Début HP" }
+	field endHP			{ domain: DoNumber,			label: "Fin HP" }
+}

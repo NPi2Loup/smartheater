@@ -3,3 +3,7 @@ model/mdm.ksp
 tasks/heaterDAO.ksp
 
 model/calendar.ksp
+model/electrical.ksp
+model/freebox.ksp
+model/heater.ksp
+model/weather.ksp

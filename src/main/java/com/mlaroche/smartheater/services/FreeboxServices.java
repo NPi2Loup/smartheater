@@ -15,15 +15,9 @@
  */
 package com.mlaroche.smartheater.services;
 
-import com.mlaroche.smartheater.domain.WeatherInfo;
-
 import io.vertigo.core.node.component.Component;
 
-public interface WeatherServices extends Component {
+public interface FreeboxServices extends Component {
 
-	WeatherInfo getWeatherInfo();
-	
-
-	void updateWeather(final String measureName);
-
+	void updateFreebox(final String measureName);
 }

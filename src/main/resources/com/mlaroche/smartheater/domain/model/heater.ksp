@@ -1,0 +1,124 @@
+package com.mlaroche.smartheater.domain
+
+create DtDefinition DtRoom {
+	id rooId 				{ domain: DoId,				label: "Id"}
+	field name 				{ domain: DoLabel,			label: "Nom" }
+}
+
+create DtDefinition DtThermostat {
+	id theCd				{ domain: DoLabel,		label: "Code"}
+	field name 				{ domain: DoLabel,		label: "Nom" }
+	field power 			{ domain: DoNumber,		label: "Puissance" }
+	field observation 		{ domain: DoText,		label: "Observation" }
+	field signalRf 			{ domain: DoNumber,		label: "Signal RF" }
+	field signalRfLabel		{ domain: DoLabel,		label: "Signal RF" }
+	field blink				{ domain: DoBoolean,	label: "Clignote" }
+}
+
+create Association ARooThe {
+  	fkFieldName : "rooId"
+    
+  	dtDefinitionA : DtRoom
+	dtDefinitionB : DtThermostat
+			
+	navigabilityA : "true"
+	navigabilityB : "false"
+	
+	multiplicityA:"1..1"
+	multiplicityB:"0..*"
+	
+	labelA : "Piece"
+	labelB : "Radiateur"
+	roleA : "Room"
+	roleB : "Thermostat"
+},
+
+create DtDefinition DtHeater {
+	id heaId 				{ domain: DoId			label: "Id"}
+	field name 				{ domain: DoLabel			label: "Nom" 					 }
+	field dnsName 			{ domain: DoLabel			label: "Nom DNS/Adresse IP"				 }
+	field active			{ domain: DoBoolean		label: "Actif" 				 }
+	field auto				{ domain: DoBoolean		label: "Mode Auto"				cardinality: "1"  }
+	field autoSwitch		{ domain: DoTimestamp		label: "Retour au mode auto" 	 }
+
+}
+create DtDefinition DtHeaterInfo {
+	field temperature		{ domain: DoDouble		label: "Température" 			 }
+	field humidity			{ domain: DoDouble		label: "Humidité"				 }
+	field mode				{ domain: DoLabel			label: "Mode" 					 }
+
+}
+
+create DtDefinition DtHeaterMode {
+	stereotype : "StaticMasterData"
+	id modCd	 			{ domain: DoLabel			 label: "Id"}
+	field label 			{ domain: DoLabel			 label: "Nom" 		 }
+}
+
+create DtDefinition DtHeatersByMode {
+	field mode		{ domain: DoLabel			 label: "Id"  			}
+	field count		{ domain: DoNumber		 label: "Nombre" 		 }
+
+}
+
+create DtDefinition DtProtocol {
+	stereotype : "StaticMasterData"
+	id proCd 				{ domain: DoLabel			 label: "Id"}
+	field label 			{ domain: DoLabel			 label: "Nom" 		 }
+}
+
+create Association AHeaWca {
+  	fkFieldName : "wcaId"
+    
+  	dtDefinitionA : DtWeeklyCalendar
+	dtDefinitionB : DtHeater
+			
+	navigabilityA : "true"
+	navigabilityB : "false"
+	
+	multiplicityA:"1..1"
+	multiplicityB:"0..*"
+	
+	labelA : "Calendrier"
+	labelB : "Radiateur"
+	roleA : "WeeklyCalendar"
+	roleB : "Heater"
+}
+
+
+create Association AHeaPro {
+  	fkFieldName : "proCd"
+    
+  	dtDefinitionA : DtProtocol
+	dtDefinitionB : DtHeater
+			
+	navigabilityA : "true"
+	navigabilityB : "false"
+	
+	multiplicityA:"1..1"
+	multiplicityB:"0..*"
+	
+	labelA : "Protocol"
+	labelB : "Radiateur"
+	roleA : "Protocol"
+	roleB : "Heater"
+}
+
+
+create Association AHeaMod {
+  	fkFieldName : "modCd"
+    
+  	dtDefinitionA : DtHeaterMode
+	dtDefinitionB : DtHeater
+			
+	navigabilityA : "true"
+	navigabilityB : "false"
+	
+	multiplicityA:"1..1"
+	multiplicityB:"0..*"
+	
+	labelA : "Mode"
+	labelB : "Radiateur"
+	roleA : "Mode"
+	roleB : "Heater"
+}

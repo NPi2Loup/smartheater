@@ -69,7 +69,7 @@ public class EnedisElectricalConsumptionActivityEngine extends RunnableActivityE
 	public void run() {
 
 		final String dbName = paramManager.getParam("influxdb_dbname").getValueAsString();
-		final TimedDatas lastConsumption = timeSeriesManager.getTabularTimedData(dbName, Arrays.asList("meanPower:last"), DataFilter.builder("electricalConsumption").build(), TimeFilter.builder("now() - 30w", "now()").build());
+		final TimedDatas lastConsumption = timeSeriesManager.getLastTabularDatas(dbName, Arrays.asList("meanPower:last"), DataFilter.builder("electricalConsumption").build(), TimeFilter.builder("now() - 30w", "now()").build());
 		final LocalDate from;
 		if (!lastConsumption.getTimedDataSeries().isEmpty()) {
 			from = lastConsumption.getTimedDataSeries().get(0).getTime().atZone(ZoneId.of("Europe/Paris")).toLocalDate();
@@ -154,6 +154,7 @@ public class EnedisElectricalConsumptionActivityEngine extends RunnableActivityE
 
 		Assertion.check().isTrue("termine".equals(enedisInfo.etat.valeur), "Error retrieving infos from Enedis");
 		final Instant debut = LocalDate.parse(enedisInfo.graphe.periode.dateDebut, ENEDIS_DATE_FORMAT).atStartOfDay(ZoneId.of("Europe/Paris")).toInstant();
+		final Instant fin = LocalDate.parse(enedisInfo.graphe.periode.dateFin, ENEDIS_DATE_FORMAT).atStartOfDay(ZoneId.of("Europe/Paris")).toInstant();
 		return enedisInfo.graphe.data
 				.stream()
 				.filter(enedisData -> enedisData.valeur != -2.0)
@@ -175,8 +176,8 @@ public class EnedisElectricalConsumptionActivityEngine extends RunnableActivityE
 		}
 
 		private static class GrapheEnedis {
-			public Integer puissanceSouscrite;
-			public Integer decalage;
+			//public Integer puissanceSouscrite;
+			//public Integer decalage;
 			public PeriodeEnedis periode;
 			public List<DataEnedis> data = new ArrayList<>();
 		}

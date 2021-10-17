@@ -62,7 +62,7 @@ modules:
   io.vertigo.orchestra.OrchestraFeatures:
     featuresConfig:
       - orchestra.memory:
-          workersCount: 10
+          workersCount: 1
       - orchestra.webapi:
   com.mlaroche.smartheater.SmartHeaterFeature:
 initializers:
