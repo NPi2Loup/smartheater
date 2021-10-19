@@ -25,20 +25,28 @@ public class OrchestraInitializer implements ComponentInitializer {
 	@Override
 	public void init() {
 
-		final ProcessDefinition weatherRetrieval = ProcessDefinition.builder("Weather", "Recupération des informations météos")
+		final ProcessDefinition weatherRetrieval = ProcessDefinition.builder("ProWeather", "Recupération des informations météos")
 				.withProcessType(ProcessType.UNSUPERVISED)
 				.withCronExpression("0 0/5 * ? * * *")
 				.addActivity("retriveData", "retriveData", WeatherActivityEngine.class)
 				.build();
 		orchestraDefinitionManager.createOrUpdateDefinition(weatherRetrieval);
+		
 
-		final ProcessDefinition freeboxRetrieval = ProcessDefinition.builder("Freebox", "Recupération des informations freebox")
+		final ProcessDefinition freeboxRetrieval = ProcessDefinition.builder("ProFreebox", "Recupération des informations freebox")
 				.withProcessType(ProcessType.UNSUPERVISED)
 				.withCronExpression("0 0/1 * ? * * *")
 				.addActivity("retriveData", "retriveData", FreeboxActivityEngine.class)
 				.build();
 		orchestraDefinitionManager.createOrUpdateDefinition(freeboxRetrieval);
 
+		/*final ProcessDefinition enedisRetrieval = ProcessDefinition.builder("ProEnedisElectricalConsumption", "Recupération de information de consommation electrique")
+				.withProcessType(ProcessType.UNSUPERVISED)
+				.withCronExpression("0 0 6 ? * * *")
+				.addActivity("retrieveData", "retriveData", EnedisElectricalConsumptionActivityEngine.class)
+				.build();
+		orchestraDefinitionManager.createOrUpdateDefinition(enedisRetrieval);*/
+		
 		/*final ProcessDefinition statusRetrieval = ProcessDefinition.builder("RoomActivity", "Recupération des informations de status des pieces")
 				.withProcessType(ProcessType.UNSUPERVISED)
 				.withCronExpression("0 0/5 * ? * * *")//5min

@@ -69,7 +69,7 @@ public class EnedisElectricalConsumptionActivityEngine extends RunnableActivityE
 	public void run() {
 
 		final String dbName = paramManager.getParam("influxdb_dbname").getValueAsString();
-		final TimedDatas lastConsumption = timeSeriesManager.getLastTabularDatas(dbName, Arrays.asList("meanPower:last"), DataFilter.builder("electricalConsumption").build(), TimeFilter.builder("now() - 30w", "now()").build());
+		final TimedDatas lastConsumption = timeSeriesManager.getTabularTimedData(dbName, Arrays.asList("meanPower:last"), DataFilter.builder("electricalConsumption").build(), TimeFilter.builder("now() - 30w", "now()").build());
 		final LocalDate from;
 		if (!lastConsumption.getTimedDataSeries().isEmpty()) {
 			from = lastConsumption.getTimedDataSeries().get(0).getTime().atZone(ZoneId.of("Europe/Paris")).toLocalDate();

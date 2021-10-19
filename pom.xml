@@ -13,7 +13,7 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vertigo.version>3.2.0</vertigo.version>
+		<vertigo.version>3.1.1</vertigo.version>
 	</properties>
 
 
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>io.vertigo</groupId>
 			<artifactId>vertigo-influxdb-connector</artifactId>
-			<version>${vertigo.version}</version>
+			<version>3.1.1</version>
 		</dependency>
 		
 		<!-- jetty -->

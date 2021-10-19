@@ -49,6 +49,10 @@ public enum SmartheaterSmartTypes {
 	@SmartTypeDefinition(Boolean.class)
 	@Formatter(clazz = FormatterDefault.class)
 	@SmartTypeProperty(property = "storeType", value = "BOOL")
-	Boolean;
+	Boolean,	
 
+	@SmartTypeDefinition(Long.class)
+	@Formatter(clazz = FormatterDefault.class)
+	@SmartTypeProperty(property = "storeType", value = "NUMERIC")
+	Bytes;
 }
