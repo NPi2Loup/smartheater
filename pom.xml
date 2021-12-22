@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>io.vertigo</groupId>
 			<artifactId>vertigo-influxdb-connector</artifactId>
-			<version>3.1.1</version>
+			<version>${vertigo.version}</version>
 		</dependency>
 		
 		<!-- jetty -->
